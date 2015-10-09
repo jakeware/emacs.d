@@ -92,40 +92,6 @@
          ([f10] . gud-next)
          ([f11] . gud-step)))
 
-;; Navigation.
-(global-set-key (kbd "<s-up>") "\C-u1\M-v")
-(global-set-key (kbd "<s-down>") "\C-u1\C-v")
-
-(global-set-key (kbd "M-s-p") "\C-u1\M-v")
-(global-set-key (kbd "M-s-n") "\C-u1\C-v")
-
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
-
-;; Navigation ijkl.
-(global-set-key (kbd "s-i") "\C-u1\M-v")
-(global-set-key (kbd "s-k") "\C-u1\C-v")
-
-(global-set-key (kbd "M-i") 'previous-line)
-(global-set-key (kbd "M-k") 'next-line)
-(global-set-key (kbd "M-j") 'left-char)
-(global-set-key (kbd "M-l") 'right-char)
-
-(global-set-key (kbd "M-I") 'backward-paragraph)
-(global-set-key (kbd "M-K") 'forward-paragraph)
-(global-set-key (kbd "M-J") 'left-word)
-(global-set-key (kbd "M-L") 'right-word)
-
-;; Window resizing.
-(global-set-key (kbd "C-s-b") 'shrink-window-horizontally)
-(global-set-key (kbd "C-s-f") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-s-p") 'shrink-window)
-(global-set-key (kbd "C-s-n") 'enlarge-window)
-
-;; Commenting.
-(global-set-key (kbd "C-c C-c") 'comment-region)
-(global-set-key (kbd "C-S-c C-S-c") 'uncomment-region)
-
 ;; Set line numbers.
 (use-package linum
   :ensure t
@@ -299,28 +265,12 @@
   :ensure t
   :config (helm-projectile-on))
 
-;; ;; perspective.
-;; (use-package perspective
-;;   :ensure t
-;;   :config (persp-mode))
-
-;; ;; persp-projectile.
-;; (use-package persp-projectile
-;;   :ensure t
-;;   :bind (("C-x x j" . projectile-persp-switch-project)))
-
 ;; semantic.
 (use-package semantic
   :ensure t
   :config (progn (global-semanticdb-minor-mode 1)
                  (global-semantic-idle-scheduler-mode 1)
                  (semantic-mode 1)))
-
-;; ;; auto-complete.
-;; (use-package auto-complete
-;;   :ensure t
-;;   :config (global-auto-complete-mode t)
-;;   :bind ("<C-tab>" . auto-complete))
 
 ;; irony-mode.
 ;; NOTE: You must run irony-install-server once after installation.
@@ -388,11 +338,11 @@
   :if window-system
   :config (global-git-gutter-mode t))
 
-;; Monokai theme.
-(use-package monokai-theme
+;; zenburn theme.
+(use-package zenburn-theme
   :ensure t
   ;; :if window-system
-  :config (load-theme 'monokai t))
+  :config (load-theme 'zenburn t))
 
 ;; expand-region.
 (use-package expand-region
@@ -406,13 +356,6 @@
   :init (setq dired-details-hidden-string "")
   :bind (("C-c C-s" . dired-details-toggle)))
 
-;; ;; ggtags.
-;; (use-package ggtags
-;;   :ensure t
-;;   :init (progn (add-hook 'c-mode-common-hook 'ggtags-mode)
-;;                (add-hook 'cc-mode-common-hook 'ggtags-mode)
-;;                (add-hook 'java-mode-hook 'ggtags-mode)))
-
 ;; ansi-color.
 ;; https://emacs.stackexchange.com/questions/8135/why-does-compilation-buffer-show-control-characters
 (use-package ansi-color
@@ -422,20 +365,3 @@
               (let ((buffer-read-only nil))
                 (ansi-color-apply-on-region (point-min) (point-max))))
             (add-hook 'compilation-filter-hook 'my/ansi-colorize-buffer)))
-
-;; ;; gnus.
-;; (use-package gnus
-;;   :ensure t
-;;   :init (progn (setq user-mail-address "wnickgreene@gmail.com")
-;;                (setq user-full-name "W. Nicholas Greene")
-;;                (setq gnus-select-method
-;;                      '(nnimap "gmail"
-;;                               (nnimap-address "imap.gmail.com")
-;;                               (nnimap-server-port "imaps")
-;;                               (nnimap-stream ssl)))
-
-;;                (setq smtpmail-smtp-service 587
-;;                      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\(\\|$\\)\\|^[\"]\"[#'()]")
-;;                (setq send-mail-function	'smtpmail-send-it
-;;                      message-send-mail-function	'smtpmail-send-it
-;;                      smtpmail-smtp-server "smtp.gmail.com")))
