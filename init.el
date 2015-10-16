@@ -214,26 +214,6 @@
   :init (setq magit-last-seen-setup-instructions "1.4.0")
   :bind (("C-x g" . magit-status)))
 
-;; Jedi.
-(use-package jedi
-  :ensure t
-  :init (setq jedi:complete-on-dot t)
-  :config (add-hook 'python-mode-hook 'jedi:setup))
-
-;; Graphiviz mode.
-(use-package graphviz-dot-mode
-  :ensure t)
-
-;; Whitespace butler.
-(use-package ws-butler
-  :ensure t
-  :commands ws-butler-mode
-  :init (progn (add-hook 'c-mode-common-hook 'ws-butler-mode)
-               (add-hook 'cc-mode-common-hook 'ws-butler-mode)
-               (add-hook 'c++-mode-common-hook 'ws-butler-mode)
-               (add-hook 'python-mode-hook 'ws-butler-mode)
-               (add-hook 'cython-mode-hook 'ws-butler-mode)))
-
 ;; Needed for helm-projectile-grep.
 (use-package grep)
 
@@ -333,36 +313,8 @@
         )
   :bind ("C-;" . company-complete-common))
 
-;; Git gutter fringe.
-(use-package git-gutter-fringe
-  :ensure t
-  :if window-system
-  :config (global-git-gutter-mode t))
-
 ;; zenburn theme.
 (use-package zenburn-theme
   :ensure t
   ;; :if window-system
   :config (load-theme 'zenburn t))
-
-;; expand-region.
-(use-package expand-region
-  :ensure t
-  :bind (("C-=" . er/expand-region)
-         ("C--" . er/contract-region)))
-
-;; dired-details.
-(use-package dired-details
-  :ensure t
-  :init (setq dired-details-hidden-string "")
-  :bind (("C-c C-s" . dired-details-toggle)))
-
-;; ansi-color.
-;; https://emacs.stackexchange.com/questions/8135/why-does-compilation-buffer-show-control-characters
-(use-package ansi-color
-  :ensure t
-  :config (progn 
-            (defun my/ansi-colorize-buffer ()
-              (let ((buffer-read-only nil))
-                (ansi-color-apply-on-region (point-min) (point-max))))
-            (add-hook 'compilation-filter-hook 'my/ansi-colorize-buffer)))
