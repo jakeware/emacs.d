@@ -1,4 +1,4 @@
-;;; .emacs.s/init.el --- wng init file.
+;;; Commentary: jakeware emacs init file
 
 ;;; Code:
 
