@@ -139,9 +139,9 @@
 (setq doc-view-resolution 300)
 
 ;; pdf-tools.
-(use-package pdf-tools
-  :ensure t
-  :config (pdf-tools-install))
+;;(use-package pdf-tools
+;;  :ensure t
+;;  :config (pdf-tools-install))
 
 ;; c++.
 (use-package c++-mode
@@ -317,3 +317,12 @@
   :ensure t
   ;; :if window-system
   :config (load-theme 'zenburn t))
+
+;; color stuff.
+(use-package ansi-color
+  :ensure t
+  :config (progn 
+            (defun my/ansi-colorize-buffer ()
+              (let ((buffer-read-only nil))
+                (ansi-color-apply-on-region (point-min) (point-max))))
+            (add-hook 'compilation-filter-hook 'my/ansi-colorize-buffer)))
