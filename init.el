@@ -174,15 +174,15 @@
   :config (add-hook 'markdown-mode-hook 'pandoc-mode))
 
 ;; Indent highlighting.
-(use-package highlight-indentation
-  :load-path "~/.emacs.d/Highlight-Indentation-for-Emacs"
-  :init (progn (add-hook 'c-mode-hook 'highlight-indentation-mode)
-               (add-hook 'c++-mode-hook 'highlight-indentation-mode)
-               (add-hook 'python-mode-hook 'highlight-indentation-mode)
-               (add-hook 'xml-mode-hook 'highlight-indentation-mode)
-               (add-hook 'java-mode-hook 'highlight-indentation-mode)
-               (add-hook 'cmake-mode-hook 'highlight-indentation-mode))
-  :config (highlight-indentation-mode t))
+;; (use-package highlight-indentation
+;;   :load-path "~/.emacs.d/Highlight-Indentation-for-Emacs"
+;;   :init (progn (add-hook 'c-mode-hook 'highlight-indentation-mode)
+;;                (add-hook 'c++-mode-hook 'highlight-indentation-mode)
+;;                (add-hook 'python-mode-hook 'highlight-indentation-mode)
+;;                (add-hook 'xml-mode-hook 'highlight-indentation-mode)
+;;                (add-hook 'java-mode-hook 'highlight-indentation-mode)
+;;                (add-hook 'cmake-mode-hook 'highlight-indentation-mode))
+;;   :config (highlight-indentation-mode t))
 
 ;; Yasnippet.
 (use-package yasnippet
@@ -191,22 +191,22 @@
   :config (yas-global-mode t))
 
 ;; Flycheck.
-(use-package flycheck
-  :ensure t
-  :config (progn (add-hook 'after-init-hook #'global-flycheck-mode)
-                 (add-hook 'python-mode-hook (lambda ()
-                                               (flycheck-select-checker 'python-pylint)))))
+;; (use-package flycheck
+;;   :ensure t
+;;   :config (progn (add-hook 'after-init-hook #'global-flycheck-mode)
+;;                  (add-hook 'python-mode-hook (lambda ()
+;;                                                (flycheck-select-checker 'python-pylint)))))
 
 ;; Flycheck Google cpplint
-(use-package flycheck-google-cpplint
-  :ensure t
-  :config (progn (setq flycheck-googlelint-verbose "3")
-                 ;; (setq flycheck-googlelint-root "src")
-                 (setq flycheck-googlelint-linelength "80")
-                 (add-hook 'c-mode-hook (lambda ()
-                                          (flycheck-select-ichecker 'c/c++-googlelint))
-                 (add-hook 'c++-mode-hook (lambda ()
-                                            (flycheck-select-checker 'c/c++-googlelint))))))
+;; (use-package flycheck-google-cpplint
+;;   :ensure t
+;;   :config (progn (setq flycheck-googlelint-verbose "3")
+;;                  ;; (setq flycheck-googlelint-root "src")
+;;                  (setq flycheck-googlelint-linelength "80")
+;;                  (add-hook 'c-mode-hook (lambda ()
+;;                                           (flycheck-select-ichecker 'c/c++-googlelint))
+;;                  (add-hook 'c++-mode-hook (lambda ()
+;;                                             (flycheck-select-checker 'c/c++-googlelint))))))
 
 ;; Magit.
 (use-package magit
